@@ -17,6 +17,9 @@ use App\Http\Controllers\SongController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('songs', function () {
+    return view('index');
+});
 
 
 Route::get('/songs', [SongController::class, 'index']);

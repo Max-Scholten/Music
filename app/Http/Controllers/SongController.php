@@ -15,7 +15,7 @@ class SongController extends Controller
     public function show($index)
     {
         $songs = ['Living on a prayer', 'Nothing else matters', 'Thunderstruck', 'Back in black', 'Ace of spades'];
-        $song = $songs[$index];
+        $songs [$index];
         return view('songs.show', compact('song'));
     }
 
@@ -27,7 +27,7 @@ class SongController extends Controller
     public function edit($index)
     {
         $songs = ['Living on a prayer', 'Nothing else matters', 'Thunderstruck', 'Back in black', 'Ace of spades'];
-        $song = $songs[$index];
+        $song = $songs [$index];
         return view('songs.edit', compact('song'));
     }
 }
