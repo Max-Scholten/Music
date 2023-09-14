@@ -14,8 +14,10 @@ class SongController extends Controller
 
     public function show($index)
     {
+        // Haal de song op basis van het indexnummer op uit de array
         $songs = ['Living on a prayer', 'Nothing else matters', 'Thunderstruck', 'Back in black', 'Ace of spades'];
-        $songs [$index];
+        $song = $songs[$index] ?? null;
+
         return view('songs.show', compact('song'));
     }
 
@@ -26,8 +28,11 @@ class SongController extends Controller
 
     public function edit($index)
     {
+        // Haal de song op basis van het indexnummer op uit de array
         $songs = ['Living on a prayer', 'Nothing else matters', 'Thunderstruck', 'Back in black', 'Ace of spades'];
-        $song = $songs [$index];
+        $song = $songs[$index] ?? null;
+
         return view('songs.edit', compact('song'));
     }
 }
+
