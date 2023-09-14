@@ -20,6 +20,16 @@ Route::get('/', function () {
 Route::get('songs', function () {
     return view('index');
 });
+Route::get('songs', function () {
+    return view('edit');
+});
+Route::get('songs', function () {
+    return view('creat');
+});
+Route::get('songs', function () {
+    return view('show');
+});
+
 
 
 Route::get('/songs', [SongController::class, 'index']);
