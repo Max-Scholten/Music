@@ -17,24 +17,12 @@ use App\Http\Controllers\SongController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('songs', function () {
-    return view('index');
-});
-Route::get('songs', function () {
-    return view('edit');
-});
-Route::get('songs', function () {
-    return view('creat');
-});
-Route::get('songs', function () {
-    return view('show');
-});
-
 
 
 Route::get('/songs', [SongController::class, 'index']);
-Route::get('/songs/{index}', [SongController::class, 'show']);
 Route::get('/songs/create', [SongController::class, 'create']);
+Route::get('/songs/{index}', [SongController::class, 'show']);
+
 Route::get('/songs/{index}/edit', [SongController::class, 'edit']);
 
 
