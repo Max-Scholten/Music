@@ -25,6 +25,9 @@ Route::get('/songs/{index}', [SongController::class, 'show']);
 
 Route::get('/songs/{index}/edit', [SongController::class, 'edit']);
 
+Route::get('/songs/{index}', 'SongController@show')->name('songs.show');
+
+
 
 
 
