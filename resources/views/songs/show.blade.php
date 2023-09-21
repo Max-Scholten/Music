@@ -20,9 +20,11 @@
 
             <nav class="grid grid-rows-2 grid-cols-3 col-span-2">
 
-                <a href="{{ route('songs.index') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Index</a>
+                <a href="{{ route('songs.index') }}"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Index</a>
 
-                <a href="{{ route('songs.create') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</a>
+                <a href="{{ route('songs.create') }}"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</a>
 
             </nav>
         </div>
@@ -30,17 +32,33 @@
 
 
     <main class="grid grid-rows-3 col-span-3 py-1">
-        <!-- Body Content -->
-        @extends('layouts.app') {{-- If you have a layout, you can extend it --}}
+
+        @extends('layouts.app')
 
         @section('content')
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold">Song info</h2>
-            <ul>
+            <div class="container mx-auto">
+                <h2 class="text-2xl font-bold">Edit Song</h2>
+                <form method="POST" action="{{ route('songs.index', ['index' => $song]) }}">
+                    @csrf
+                    @method('PUT')
 
-            </ul>
-        </div>
+                    <div class="mb-4 text-black">
+                        <label for="title" class="block text-sm font-medium text-white">Title</label>
+                        <input type="text" id="title" name="title" class="form-input" value="{{ $song }}">
+                    </div>
+                    <div class="mb-4 text-black">
+                        <label for="singer" class="block text-sm font-medium text-white">Singer</label>
+                        <input type="text" id="singer" name="singer" class="form-input">
+                    </div>
+                    <div class="flex items-center">
+                        <button type="submit"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Update</button>
+                        <a href="{{ route('songs.index') }}" class="ml-4 text-gray-400 hover:text-gray-200">Back</a>
+                    </div>
+                </form>
+            </div>
         @endsection
+
     </main>
     <footer class="fixed bottom-0 left-0 right-0 bg-purple-500 p-4 text-center grid grid-rows-5 col-span-3 h-12">
         <div class="container mx-auto">
@@ -51,4 +69,3 @@
 </body>
 
 </html>
-

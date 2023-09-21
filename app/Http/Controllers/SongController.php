@@ -18,28 +18,25 @@ class SongController extends Controller
         return view('songs.show', compact('song'));
     }
 
+
     public function create()
     {
         return view('songs.create');
     }
-    /*
-    public function store(Request $request)
-    {
-        $this->songs[] = $request->input('song_name');
-        return redirect()->route('songs.index')->with('success', 'Song created successfully');
-    }
-    */
     public function edit($index)
     {
-        $song = $this->songs[$index] ?? null;
-        return view('songs.edit', compact('song', 'index'));
+        
+        $song = Song::find($index);
+        return view('songs.edit', ['index' => $index, 'song' => $song]);
     }
+
 
     public function update(Request $request, $index)
     {
-        $this->songs[$index] = $request->input('song_name');
+        $this->songs[$index] = $request->input('title');
         return redirect()->route('songs.index')->with('success', 'Song updated successfully');
     }
+
 
     public function destroy($index)
     {
