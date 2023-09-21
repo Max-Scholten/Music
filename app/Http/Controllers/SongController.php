@@ -22,13 +22,13 @@ class SongController extends Controller
     {
         return view('songs.create');
     }
-
+    /*
     public function store(Request $request)
     {
         $this->songs[] = $request->input('song_name');
         return redirect()->route('songs.index')->with('success', 'Song created successfully');
     }
-
+    */
     public function edit($index)
     {
         $song = $this->songs[$index] ?? null;

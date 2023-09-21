@@ -16,7 +16,7 @@
 
     <header class="fixed bg-green-500 top-0 left-0 right-0 z-0 grid grid-rows-1 grid-cols-3 ">
         <div class="container mx-auto flex justify-between p-3 col-span-3">
-            <h1 class="grid grid-rows-1 col-span-3 py-1">Songs Library</h1>
+            <h1 class="grid grid-rows-1 col-span-3 text-4xl py-1">Songs Library</h1>
 
             <nav class="grid grid-rows-2 grid-cols-3 col-span-2">
 
