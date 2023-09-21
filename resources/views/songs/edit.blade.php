@@ -40,7 +40,7 @@
                 <h2 class="text-2xl font-bold">Edit Song</h2>
                 <form method="POST" action="{{ route('songs.update', ['index' => $index]) }}">
                     @csrf
-                    @method('PUT') 
+                    @method('PUT')
 
                     <div class="mb-4 text-black">
                         <label for="title" class="block text-sm font-medium text-white">Title</label>
@@ -53,7 +53,7 @@
                     <div class="flex items-center">
                         <button type="submit"
                             class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Update</button>
-                        <a href="{{ route('songs.index') }}" class="ml-4 text-gray-400 hover:text-gray-200">Back</a>
+                        <a href="{{ route('songs.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Back</a>
                     </div>
                 </form>
             </div>
