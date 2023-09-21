@@ -25,9 +25,9 @@ class SongController extends Controller
     }
     public function edit($index)
     {
-        
-        $song = Song::find($index);
-        return view('songs.edit', ['index' => $index, 'song' => $song]);
+
+        $song = $this->songs[$index] ?? null;
+        return view('songs.edit', compact('song'));
     }
 
 
