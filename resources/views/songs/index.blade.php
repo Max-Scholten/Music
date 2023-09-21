@@ -1,48 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Songs</title>
+    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+
+
 </head>
 
-<body>
-    <div class="grid grid-cols-5 grid-rows-5 h-screen">
-        <!-- Header -->
-        <header class="col-span-5 bg-darkgreen p-4">
-            <!-- Header Content -->
-            <h1 class="text-white text-center">Header</h1>
-        </header>
+<body class="bg-gray-800 text-white relative grid grid-rows-5 grid-cols-3">
 
-        <!-- Main Content (Body) -->
-        <main class="col-span-5 row-span-4 bg-matte-black p-4">
-            <!-- Body Content -->
-            <h1 class="text-white text-center">Song-list:</h1>
-            @extends('layouts.app') {{-- If you have a layout, you can extend it --}}
+    <header class="fixed bg-green-500 top-0 left-0 right-0 z-0 grid grid-rows-1 grid-cols-3 ">
+        <div class="container mx-auto flex justify-between p-3 col-span-3">
+            <h1 class="grid grid-rows-1 col-span-3 py-1">Songs Library</h1>
 
-            @section('content')
-            <div class="container">
-                <h1 class="text-white">Song List</h1>
-                <ul>
-                    @foreach ($songs as $index => $song)
-                    <li><a href="{{ route('songs.show', ['index' => $index]) }}">{{ $song }}</a>
-                    </li>
-                @endforeach
-                </ul>
-            </div>
-            @endsection
-        </main>
+            <nav class="grid grid-rows-2 grid-cols-3 col-span-2">
 
-        <!-- Footer -->
-        <footer class="col-span-5 bg-light-black p-4">
-            <!-- Footer Content -->
-            <h1 class="text-white text-center">Footer</h1>
-        </footer>
-    </div>
+                <a href="{{ route('songs.index') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Index</a>
+
+                <a href="{{ route('songs.create') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</a>
+
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="grid grid-rows-3 col-span-3 py-1">
+        <!-- Body Content -->
+        @extends('layouts.app') {{-- If you have a layout, you can extend it --}}
+
+        @section('content')
+        <div class="container mx-auto">
+            <h2 class="text-2xl font-bold">Song List</h2>
+            <ul>
+                @foreach ($songs as $index => $song)
+                <li><a href="{{ route('songs.show', ['index' => $index]) }}">{{ $song }}</a>
+                </li>
+            @endforeach
+            </ul>
+        </div>
+        @endsection
+    </main>
+    <footer class="fixed bottom-0 left-0 right-0 bg-green-500 p-4 text-center grid grid-rows-5 col-span-3 h-12">
+        <div class="container mx-auto">
+            <p>&copy; Max Scholten | Songs</p>
+        </div>
+    </footer>
+
 </body>
 
 </html>
-
 
