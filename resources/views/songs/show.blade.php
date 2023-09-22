@@ -51,6 +51,7 @@
                         <input type="text" id="singer" name="singer" class="form-input">
                     </div>
                     <div class="flex items-center">
+
                         <a href="{{ route('songs.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Back</a>
                     </div>
                 </form>
