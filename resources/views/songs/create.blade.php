@@ -38,7 +38,7 @@
         @section('content')
             <div class="container mx-auto">
                 <h2 class="text-2xl font-bold">Create Song</h2>
-                <form method="POST" action="{{ route('songs.index') }}">
+                <form method="POST" action="{{ route('songs.store') }}">
                     @csrf
                     <div class="mb-4 text-black">
                         <label for="title" class="block text-sm font-medium text-white">Title</label>
@@ -49,11 +49,11 @@
                         <input type="text" id="singer" name="singer" class="form-input">
                     </div>
                     <div class="flex items-center">
-                        <button type="submit"
-                            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Create</button>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Create</button>
                         <a href="{{ route('songs.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Back</a>
                     </div>
                 </form>
+
             </div>
         @endsection
     </main>

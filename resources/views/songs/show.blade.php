@@ -38,25 +38,26 @@
         @section('content')
             <div class="container mx-auto">
                 <h2 class="text-2xl font-bold">Edit Song</h2>
-                <form method="POST" action="{{ route('songs.index', ['index' => $song]) }}">
+                <form method="POST" action="{{ route('songs.update', ['song' => $song->id]) }}">
                     @csrf
                     @method('PUT')
 
                     <div class="mb-4 text-black">
                         <label for="title" class="block text-sm font-medium text-white">Title</label>
-                        <input type="text" id="title" name="title" class="form-input" value="{{ $song }}">
+                        <input type="text" id="title" name="title" class="form-input" value="{{ $song->title }}">
                     </div>
                     <div class="mb-4 text-black">
                         <label for="singer" class="block text-sm font-medium text-white">Singer</label>
-                        <input type="text" id="singer" name="singer" class="form-input">
+                        <input type="text" id="singer" name="singer" class="form-input" value="{{ $song->singer }}">
                     </div>
                     <div class="flex items-center">
-
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Update</button>
                         <a href="{{ route('songs.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Back</a>
                     </div>
                 </form>
             </div>
         @endsection
+
 
     </main>
     <footer class="fixed bottom-0 left-0 right-0 bg-purple-500 p-4 text-center grid grid-rows-5 col-span-3 h-12">

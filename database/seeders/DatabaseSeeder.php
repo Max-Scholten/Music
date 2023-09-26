@@ -1,27 +1,20 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SongsTableSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the songs table with your favorite songs.
+     * Run the database seeds.
      */
-    public function run()
+    public function run(): void
     {
-        $songs = [
-            ['title' => 'Hallelujah'],
-            ['title' => 'I am a person'],
-            ['title' => 'Your Myth'],
-            ['title' => 'Venus line'],
-            ['title' => 'Rif it up'],
-        ];
-
-        // Loop through the songs array and insert each song into the database.
-        foreach ($songs as $song) {
-            DB::table('songs')->insert($song);
-        }
+        $this->call([
+            SongsTableSeeder::class,
+        ]);
     }
 }
 

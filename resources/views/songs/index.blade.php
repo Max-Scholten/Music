@@ -34,16 +34,23 @@
         @extends('layouts.app') {{-- If you have a layout, you can extend it --}}
 
         @section('content')
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold">Song List</h2>
-            <ul>
-                @foreach ($songs as $index => $song)
-                <li><a href="{{ route('songs.show', ['index' => $index]) }}">{{ $song }}</a>
-                </li>
-            @endforeach
-            </ul>
-        </div>
+            <div class="container mx-auto">
+                <h2 class="text-2xl font-bold">Song List</h2>
+                <ul>
+                    @foreach ($songs as $song)
+                        <li>
+                            <a href="{{ route('songs.show', ['index' => $song->id]) }}">{{ $song->title }}</a>
+                            <form method="POST" action="{{ route('songs.destroy', ['song' => $song->id]) }}" onsubmit="return confirm('Are you sure you want to delete this song?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded-lg hover:bg-red-600">Delete</button>
+                            </form>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         @endsection
+
     </main>
     <footer class="fixed bottom-0 left-0 right-0 bg-green-500 p-4 text-center grid grid-rows-5 col-span-3 h-12">
         <div class="container mx-auto">
