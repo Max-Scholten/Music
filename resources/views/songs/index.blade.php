@@ -39,7 +39,7 @@
                 <ul>
                     @foreach ($songs as $song)
                         <li>
-                            <a href="{{ route('songs.show', ['index' => $song->id]) }}">{{ $song->title }}</a>
+                            <a class="text-xl font-bold" href="{{ route('songs.show', ['index' => $song->id]) }}">{{ $song->title }}</a>
                             <form method="POST" action="{{ route('songs.destroy', ['song' => $song->id]) }}" onsubmit="return confirm('Are you sure you want to delete this song?')">
                                 @csrf
                                 @method('DELETE')

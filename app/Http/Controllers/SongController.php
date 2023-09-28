@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SongRequest;
 use Illuminate\Http\Request;
 use App\Models\Song;
 
@@ -29,22 +30,19 @@ class SongController extends Controller
     {
         return view('songs.create');
     }
-    public function store(Request $request)
+    public function store(SongRequest $request)
     {
-        // Validate the submitted form data if needed.
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'singer' => 'required|string|max:255',
-        ]);
 
-        // Save the new song in the database
-        $song = new Song;
-        $song->title = $validatedData['title'];
-        $song->singer = $validatedData['singer'];
-        $song->save();
+        // saves new songs in the database <= No mass assignment
+//        $song = new Song;
+//        $song->title = $validatedData['title'];
+//        $song->singer = $validatedData['singer'];
+//        $song->save();
 
-        // Send a success message and go back to the index page
-        return redirect()->route('songs.index')->with('success', 'Song created successfully');
+        Song::create($request->validated()); // mass assignment
+
+        // Will send a success message and send you back to te index page
+        return redirect()->route('songs.index')->with('success', 'Song good saved');
     }
 
     public function edit($index)
@@ -55,26 +53,10 @@ class SongController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(SongRequest $request, $id)
     {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'singer' => 'required|string|max:255',
-        ]);
-
         // Find the song by ID
-        $song = Song::find($id);
-
-        if (!$song) {
-            // Handle the case where the song is not found
-            return redirect()->route('songs.index')->with('error', 'Song not found.');
-        }
-
-        // Update the song data
-        $song->title = $validatedData['title'];
-        $song->singer = $validatedData['singer'];
-        $song->save();
+        $song = Song::findOrFail($id)->update($request->validated());
 
         // Redirect back to the song list with a success message
         return redirect()->route('songs.index')->with('success', 'Song updated successfully.');
