@@ -15,6 +15,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SongsTableSeeder::class,
         ]);
+        $this->call([
+            BandsTableSeeder::class,
+        ]);
+        $this->call([
+            AlbumTableSeeder::class,
+        ]);
     }
 }
 
