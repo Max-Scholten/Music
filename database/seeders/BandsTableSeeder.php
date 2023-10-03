@@ -15,6 +15,8 @@ class BandsTableSeeder extends Seeder
     {
         $bands = [
             ['name' => 'Big Time Rush', 'genre' => 'Pop', 'founded' => '2009', 'active_till' => '2014','created_at' => now()],
+            ['name' => 'Pentatonix', 'genre' => 'All', 'founded' => '2011', 'active_till' => '2023','created_at' => now()],
+            ['name' => 'AJR', 'genre' => 'Folk', 'founded' => '2005', 'active_till' => '2023','created_at' => now()],
 
         ];
 
